@@ -1,9 +1,6 @@
 package br.edu.utfpr.garuber.veiculo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,13 +13,9 @@ public class Veiculo {
     private Long id;
 
     @NotNull
-    @NotEmpty
-    @NotBlank
-    private String modelo;
-    @NotNull
-    @NotEmpty
-    @NotBlank
-    private String marca;
+    @ManyToOne
+    private EspecificacaoVeiculo especificacaoVeiculo;
+
     @NotNull
     @NotEmpty
     @NotBlank
@@ -34,10 +27,9 @@ public class Veiculo {
     @NotBlank
     private String cor;
 
-    public Veiculo(Long id, String modelo, String marca, String placa, Long ano, String cor) {
+    public Veiculo(Long id, @NotNull EspecificacaoVeiculo especificacaoVeiculo, @NotNull @NotEmpty @NotBlank String placa, @NotNull Long ano, @NotNull @NotEmpty @NotBlank String cor) {
         this.id = id;
-        this.modelo = modelo;
-        this.marca = marca;
+        this.especificacaoVeiculo = especificacaoVeiculo;
         this.placa = placa;
         this.ano = ano;
         this.cor = cor;
@@ -52,22 +44,6 @@ public class Veiculo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
     }
 
     public String getPlaca() {
@@ -92,5 +68,13 @@ public class Veiculo {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public EspecificacaoVeiculo getEspecificacaoVeiculo() {
+        return especificacaoVeiculo;
+    }
+
+    public void setEspecificacaoVeiculo(EspecificacaoVeiculo especificacaoVeiculo) {
+        this.especificacaoVeiculo = especificacaoVeiculo;
     }
 }
