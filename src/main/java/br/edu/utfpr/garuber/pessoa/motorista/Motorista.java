@@ -2,6 +2,7 @@ package br.edu.utfpr.garuber.pessoa.motorista;
 
 import br.edu.utfpr.garuber.pessoa.Pessoa;
 import br.edu.utfpr.garuber.veiculo.Veiculo;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,9 +12,10 @@ public class Motorista extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String cnh;
     @OneToMany
-    @JoinColumn(referencedColumnName = "id")
+    @NotNull
     private Set<Veiculo> veiculo;
     private Long avaliacao;
 

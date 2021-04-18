@@ -1,9 +1,9 @@
 package br.edu.utfpr.garuber.pagamento;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,15 +11,19 @@ public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double valor;
+    @NotNull
+    @Column(precision=10, scale=2)
+    private BigDecimal valor;
 
+    @Enumerated(EnumType.STRING)
+    @NotNull
     private FormaPagamento formaPagamento;
     private LocalDateTime dataPagamento;
 
     public Pagamento() {
     }
 
-    public Pagamento(Long id, Double valor, FormaPagamento formaPagamento, LocalDateTime dataPagamento) {
+    public Pagamento(Long id, BigDecimal valor, FormaPagamento formaPagamento, LocalDateTime dataPagamento) {
         this.id = id;
         this.valor = valor;
         this.formaPagamento = formaPagamento;
@@ -34,11 +38,12 @@ public class Pagamento {
         this.id = id;
     }
 
-    public Double getValor() {
+
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

@@ -1,6 +1,9 @@
 package br.edu.utfpr.garuber.pessoa;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -8,8 +11,16 @@ public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private String nome;
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private String cpf;
+    @NotNull
     private Long idade;
 
     public Pessoa(Long id, String nome, String cpf, Long idade) {

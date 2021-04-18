@@ -1,17 +1,19 @@
 package br.edu.utfpr.garuber.pessoa.passageiro;
 
 import br.edu.utfpr.garuber.pessoa.Pessoa;
+import br.edu.utfpr.garuber.pessoa.motorista.Motorista;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Passageiro extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany
+    private Set<Motorista> motoristasFavoritos;
 
     public Passageiro() {
 
@@ -27,11 +29,21 @@ public class Passageiro extends Pessoa {
         this.id = id;
     }
 
-    public Passageiro(Long id, String nome, String cpf, Long idade) {
+    public Passageiro(Long id, String nome, String cpf, Long idade, Set<Motorista> motoristasFavoritos) {
         super(id, nome, cpf, idade);
+        this.motoristasFavoritos = motoristasFavoritos;
     }
 
-    public Passageiro(Long id) {
+    public Passageiro(Long id, Set<Motorista> motoristasFavoritos) {
         this.id = id;
+        this.motoristasFavoritos = motoristasFavoritos;
+    }
+
+    public Set<Motorista> getMotoristasFavoritos() {
+        return motoristasFavoritos;
+    }
+
+    public void setMotoristasFavoritos(Set<Motorista> motoristasFavoritos) {
+        this.motoristasFavoritos = motoristasFavoritos;
     }
 }
