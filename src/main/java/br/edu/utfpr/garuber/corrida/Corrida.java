@@ -6,9 +6,9 @@ import br.edu.utfpr.garuber.pessoa.motorista.Motorista;
 import br.edu.utfpr.garuber.pessoa.passageiro.Passageiro;
 import br.edu.utfpr.garuber.veiculo.Veiculo;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalTime;
 
 @Entity
 public class Corrida {
@@ -16,8 +16,8 @@ public class Corrida {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @NotNull
+    @OneToOne
     private TipoCorrida tipoCorrida;
 
     @OneToOne
@@ -39,6 +39,24 @@ public class Corrida {
     @OneToOne
     @NotNull
     private Pagamento pagamento;
+
+    @NotNull
+    private LocalTime inicioCorrida;
+
+    @NotNull
+    private LocalTime fimCorrida;
+
+    @NotNull
+    private String latitudePartida;
+
+    @NotNull
+    private String longitudePartida;
+
+    @NotNull
+    private String latitudeDestino;
+
+    @NotNull
+    private String longitudeDestino;
 
     public Corrida(Long id, TipoCorrida tipoCorrida, Motorista motorista, Veiculo veiculo, Passageiro passageiro, Avaliacao avaliacao) {
         this.id = id;
