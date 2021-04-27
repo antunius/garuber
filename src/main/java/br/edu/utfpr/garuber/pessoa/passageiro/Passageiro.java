@@ -1,49 +1,29 @@
 package br.edu.utfpr.garuber.pessoa.passageiro;
 
+import br.edu.utfpr.garuber.avaliacao.Avaliacao;
 import br.edu.utfpr.garuber.pessoa.Pessoa;
 import br.edu.utfpr.garuber.pessoa.motorista.Motorista;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
+@Data
 public class Passageiro extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @OneToMany
-    private Set<Motorista> motoristasFavoritos;
+	@OneToMany
+	private Set<Motorista> motoristasFavoritos;
 
-    public Passageiro() {
+	private BigInteger avaliacao;
 
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Passageiro(Long id, String nome, String cpf, Long idade, Set<Motorista> motoristasFavoritos) {
-        super(id, nome, cpf, idade);
-        this.motoristasFavoritos = motoristasFavoritos;
-    }
-
-    public Passageiro(Long id, Set<Motorista> motoristasFavoritos) {
-        this.id = id;
-        this.motoristasFavoritos = motoristasFavoritos;
-    }
-
-    public Set<Motorista> getMotoristasFavoritos() {
-        return motoristasFavoritos;
-    }
-
-    public void setMotoristasFavoritos(Set<Motorista> motoristasFavoritos) {
-        this.motoristasFavoritos = motoristasFavoritos;
-    }
 }
+

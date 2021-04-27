@@ -1,12 +1,20 @@
 package br.edu.utfpr.garuber.pessoa;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,47 +29,7 @@ public class Pessoa {
     @NotBlank
     private String cpf;
     @NotNull
-    private Long idade;
+    private LocalDate dataNascimento;
 
-    public Pessoa(Long id, String nome, String cpf, Long idade) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.idade = idade;
-    }
 
-    public Pessoa() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Long getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Long idade) {
-        this.idade = idade;
-    }
 }

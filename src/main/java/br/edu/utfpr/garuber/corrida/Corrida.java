@@ -5,124 +5,65 @@ import br.edu.utfpr.garuber.pagamento.Pagamento;
 import br.edu.utfpr.garuber.pessoa.motorista.Motorista;
 import br.edu.utfpr.garuber.pessoa.passageiro.Passageiro;
 import br.edu.utfpr.garuber.veiculo.Veiculo;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Corrida {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull
-    @OneToOne
-    private TipoCorrida tipoCorrida;
+	@NotNull
+	@OneToOne
+	private TipoCorrida tipoCorrida;
 
-    @OneToOne
-    @NotNull
-    private Motorista motorista;
+	@Enumerated
+	private CorridaStatus corridaStatus;
 
-    @OneToOne
-    @NotNull
-    private Veiculo veiculo;
+	@OneToOne
+	private Motorista motorista;
 
-    @OneToOne
-    @NotNull
-    private Passageiro passageiro;
+	@OneToOne
+	private Veiculo veiculo;
 
-    @OneToOne
-    @NotNull
-    private Avaliacao avaliacao;
+	@OneToOne
+	@NotNull
+	private Passageiro passageiro;
 
-    @OneToOne
-    @NotNull
-    private Pagamento pagamento;
+	@OneToOne
+	@NotNull
+	private Avaliacao avaliacao;
 
-    @NotNull
-    private LocalTime inicioCorrida;
+	@OneToOne
+	@NotNull
+	private Pagamento pagamento;
 
-    @NotNull
-    private LocalTime fimCorrida;
+	@NotNull
+	private LocalTime inicioCorrida;
 
-    @NotNull
-    private String latitudePartida;
+	@NotNull
+	private LocalTime fimCorrida;
 
-    @NotNull
-    private String longitudePartida;
+	@NotNull
+	private String latitudePartida;
 
-    @NotNull
-    private String latitudeDestino;
+	@NotNull
+	private String longitudePartida;
 
-    @NotNull
-    private String longitudeDestino;
+	@NotNull
+	private String latitudeDestino;
 
-    public Corrida(Long id, TipoCorrida tipoCorrida, Motorista motorista, Veiculo veiculo, Passageiro passageiro, Avaliacao avaliacao) {
-        this.id = id;
-        this.tipoCorrida = tipoCorrida;
-        this.motorista = motorista;
-        this.veiculo = veiculo;
-        this.passageiro = passageiro;
-        this.avaliacao = avaliacao;
-    }
+	@NotNull
+	private String longitudeDestino;
 
-    public Corrida() {
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public TipoCorrida getTipoCorrida() {
-        return tipoCorrida;
-    }
-
-    public void setTipoCorrida(TipoCorrida tipoCorrida) {
-        this.tipoCorrida = tipoCorrida;
-    }
-
-    public Motorista getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Passageiro getPassageiro() {
-        return passageiro;
-    }
-
-    public void setPassageiro(Passageiro passageiro) {
-        this.passageiro = passageiro;
-    }
-
-    public Avaliacao getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }
 }

@@ -3,11 +3,16 @@ package br.edu.utfpr.garuber.pessoa.motorista;
 import br.edu.utfpr.garuber.pessoa.Pessoa;
 import br.edu.utfpr.garuber.veiculo.Veiculo;
 import com.sun.istack.NotNull;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
+@Data
 public class Motorista extends Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,52 +24,4 @@ public class Motorista extends Pessoa {
     private Set<Veiculo> veiculo;
     private Long avaliacao;
 
-    public Motorista(Long id, String nome, String cpf, Long idade, String cnh, Long avaliacao) {
-        super(id, nome, cpf, idade);
-        this.id = id;
-        this.cnh = cnh;
-        this.avaliacao = avaliacao;
-    }
-
-    public Motorista(Long id, String nome, String cpf, Long idade) {
-        super(id, nome, cpf, idade);
-    }
-
-    public Motorista() {
-
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
-    }
-
-    public Long getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(Long avaliacao) {
-        this.avaliacao = avaliacao;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Set<Veiculo> getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Set<Veiculo> veiculo) {
-        this.veiculo = veiculo;
-    }
 }
