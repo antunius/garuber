@@ -24,10 +24,13 @@ public class Pessoa {
     @NotEmpty
     @NotBlank
     private String nome;
+
     @NotNull
     @NotEmpty
     @NotBlank
+    @Column(unique = true)
     private String cpf;
+
     @NotNull
     private LocalDate dataNascimento;
 

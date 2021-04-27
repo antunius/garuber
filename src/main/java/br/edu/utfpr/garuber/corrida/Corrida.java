@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -40,7 +40,6 @@ public class Corrida {
 	private Passageiro passageiro;
 
 	@OneToOne
-	@NotNull
 	private Avaliacao avaliacao;
 
 	@OneToOne
@@ -48,10 +47,9 @@ public class Corrida {
 	private Pagamento pagamento;
 
 	@NotNull
-	private LocalTime inicioCorrida;
+	private LocalDateTime inicioCorrida;
 
-	@NotNull
-	private LocalTime fimCorrida;
+	private LocalDateTime fimCorrida;
 
 	@NotNull
 	private String latitudePartida;
