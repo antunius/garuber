@@ -1,13 +1,11 @@
 package br.edu.utfpr.garuber.avaliacao;
 
+import br.edu.utfpr.garuber.corrida.Corrida;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -19,6 +17,10 @@ public class Avaliacao {
 	private Long id;
 
 	private Long nota;
+
+	@OneToOne
+	private Corrida corrida;
+
 	private String comentario;
 
 }

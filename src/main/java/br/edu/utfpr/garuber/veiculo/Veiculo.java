@@ -23,8 +23,10 @@ public class Veiculo {
     @NotEmpty
     @NotBlank
     private String placa;
+
     @NotNull
     private Long ano;
+
     @NotNull
     @NotEmpty
     @NotBlank

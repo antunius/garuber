@@ -21,6 +21,7 @@ public class Pagamento {
     @Enumerated(EnumType.STRING)
     @NotNull
     private FormaPagamento formaPagamento;
+
     private LocalDateTime dataPagamento;
 
 
